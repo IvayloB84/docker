@@ -19,7 +19,7 @@ resource "docker_network" "private_network" {
 
 resource "docker_container" "con-web" {
   name  = "con-web"
-  image = docker_image.img-web.latest
+  image = docker_image.img-web
   ports {
     internal = "80"
     external = "80"

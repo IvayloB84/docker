@@ -6,7 +6,7 @@ terraform {
   }
 }
 provider "docker" {
-  host = "tcp://192.168.56.100:2375/"
+  host = "tcp://192.168.56.102:2375/"
 }
 
 resource "docker_image" "img-web" {

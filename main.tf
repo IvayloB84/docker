@@ -5,27 +5,19 @@ terraform {
     }
   }
 }
-provider "docker" {
-  host = "tcp://docker.lab:2375"
+
+provider "docker" {}
+
+resource "docker_image" "nginx" {
+  name         = "nginx:latest"
+  keep_locally = false
 }
 
-resource "docker_image" "img-web" {
-  name = "shekeriev/bgapp-web"
-}
-
-resource "docker_network" "private_network" {
-  name = "app-net"
-}
-
-resource "docker_container" "con-web" {
-  name  = "con-web"
-  image = docker_image.img-web
+resource "docker_container" "nginx" {
+  image = docker_image.nginx.latest
+  name  = "tutorial"
   ports {
-    internal = "80"
-    external = "80"
+    internal = 80
+    external = 8000
   }
-}
-
-resource "docker_image" "img-db" {
-  name = "shekeriev/bgapp-db"
 }

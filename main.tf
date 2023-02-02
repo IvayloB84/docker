@@ -3,8 +3,6 @@ resource "docker_network" "private_network" {
   driver = "bridge"
 }
 
-provider "docker" {}
-
 resource "docker_image" "nginx" {
   name         = "nginx:latest"
   keep_locally = false

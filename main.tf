@@ -3,6 +3,10 @@ resource "docker_image" "ubuntu" {
   name = "ubuntu:latest"
 }
 
+resource "docker_network" "private_network" {
+  name = "my_network"
+  driver = bridge
+}
 # Creating a Docker Container using the latest ubuntu image
 resource "docker_container" "my_container" {   
   # Specifying the name of the container as my_container

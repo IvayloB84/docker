@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent (label'primary-node')
   stages {
     stage('Init') {
       parallel {
